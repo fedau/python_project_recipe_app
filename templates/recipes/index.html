@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+    <div class="recipes-body">
+        <div class="all-recipes-body-content">
+
+<!-- FILTER -->
+    <aside>
+        <h4>Filter</h4>
+<section class="filter-wrapper">
+    <!-- form filter for diet -->
+    <div class="filter-titles">
+    <h4>Filter by diet</h4></div>
+
+   <!-- {% if "vegetarian" in selected_filter_diet  %}
+     return checked
+   {% endif %} -->
+
+
+    <form action="/recipes/filtered" method="post" class="filter-form">
+        <div class="label-input">
+        <input type="checkbox" id="diet" value="vegetarian" name="diet"  {{ "checked" if "vegetarian" in selected_filter_diet  }}>
+        <label for="diet">vegetarian</label>
+        </div>
+        <div class="label-input">
+            <input type="checkbox" id="diet" value="vegan" name="diet" {{ "checked" if "vegan" in selected_filter_diet  }} >
+        <label for="diet">vegan</label>
+        </div>
+        <div class="label-input">
+            <input type="checkbox" id="diet" value="dessert" name="diet" {{ "checked" if "dessert" in selected_filter_diet  }}>
+        <label for="diet">dessert</label>
+        </div>
+        <div class="label-input">
+            <input type="checkbox" id="diet" value="fish" name="diet" {{ "checked" if "fish" in selected_filter_diet  }}>
+        <label for="diet">fish</label>
+        </div>
+        <div class="filter-titles">
+            <h4>Filter by ingredients</h4></div>
+        
+        {% for ingredient in ingredients %}
+        <div class="ingredient-input">
+            <input type="checkbox" id="{{ingredient.id}}" value="{{ingredient.id}}"    name="ingredient" {{ "checked" if ingredient.id in selected_filter_ingredients }}>
+            <label for="{{ingredient.id}}" name="{{ingredient.name}}">{{ingredient.name}} : {{ingredient.amount}}</label>
+             
+        </div>
+        {% endfor %}
+        <button class="button" type="submit">Submit</button>
+    </form>
+<!-- diet filter end -->
+</section>
+</aside>
+<!-- END FILTER -->
+
+<!-- RECIPES -->
+<div class="main-wrapper">
+    <section class="recipe-wrapper-inner">
+        {% for recipe in recipes %}
+            <a class="recipe-container" href="/recipes/{{recipe.id}}">
+                <div class="card-content">
+                    <div class="recipe-image"> <img src="{{recipe.image}}" alt="image not loaded"></div>
+                    <div class="recipe-name">{{recipe.name}}</div>
+                    <div class="recipe-description">{{recipe.description}} </div>
+                    <div class="recipe-cooking_time"> <i class="fa fa-clock-o fa-2px"></i>{{recipe.cooking_time}} {{recipe.diet}}</div>
+
+                </div>
+            </a>
+        {% endfor %}
+    </section>
+    </div>
+</div>
+</div>
+</div>
+</main>
+{% endblock %}    
+
+
+
+<!-- trying to write a filter function -->
+<!-- {% for recipe in recipes %}
+return recipe.id where form_data = checked
+
+selected_recipes = []
+filtered_result = form_data['recipe.diet']
+selected_recipes.append(filtered_result.id)
+
+for recipe in selected_recipes
+recipe.name
+    
+{% endfor %} -->

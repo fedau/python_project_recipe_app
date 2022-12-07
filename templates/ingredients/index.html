@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+<div class="form-wrapper">
+{% block content %}
+   Add new ingredients here
+   <form class="form-inner"  action="/ingredients" method="post">
+    <label for="name"> name</label>
+    <input type="text" id="name"  name="name">
+    <label for="amount"> amount</label>
+    <input type="text" id="amount" name="amount">
+    <button class="button" type="submit">Submit</button>
+   </form>
+
+{% endblock %}
+</div>

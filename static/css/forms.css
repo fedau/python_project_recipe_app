@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta&family=Roboto:ital,wght@0,100;1,400&family=Rubik&display=swap');
+:root{
+    --blue: #2b3a55;
+    --whiteish: #f7efef;
+    --pink: #E8C4C4;
+    --pinklight:#edd0d0;
+    --peachy: #CE7777;
+    --lighterblue: #556177;
+    --lightblue: #404e66;
+
+}
+
+
+body{
+    color: var(--blue);
+    background: var(--whiteish);
+    font-family: "Rubik", sans-serif;
+
+}
+
+.form-inner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    width: 400px;
+    border-radius: 16px;
+    margin:auto
+
+
+
+}
+
+.button{
+    border-radius: 16px;
+    color: var(--blue);
+    width: 100px;
+    margin:auto;
+    background-color: var(--whiteish);
+}
+
+.button:hover {
+    color: var(--blue);
+    background-color: var(--pink);
+    border-radius: 16px;
+
+}
