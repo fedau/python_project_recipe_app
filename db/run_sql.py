@@ -1,27 +1,26 @@
-import psycopg2
 import psycopg2.extras as ext
 import os
+import psycopg2
 
 def run_sql(sql, values = None):
     conn = None
     results = []
 
-    try:
-        postgres_user = os.getenv('POSTGRESS_USER')
-        postgres_password =os.getenv('POSTGRES_PASSWORD')
-        postgres_dbname = os.getenv('POSTGRES_DBNAME')
-        postgres_host = os.getenv('POSTGRES_HOST')
-        postgres_port = os.getenv('POSTGRES_PORT')
-        postgres_sslmode = os.getenv('POSTGRESS_SSLMODE')
-        conn=psycopg2.connect(
-            dbname = postgres_dbname, 
-            user = postgres_user,
-            password = postgres_password,
-            host = postgres_host,
-            port = postgres_port,
-            sslmode= postgres_sslmode
     
-
+    try:
+        # postgres_user = os.getenv('POSTGRESS_USER')
+        postgres_password =os.getenv('PASSWORD')
+        # postgres_dbname = os.getenv('POSTGRES_DBNAME')
+        # postgres_host = os.getenv('POSTGRES_HOST')
+        # postgres_port = os.getenv('POSTGRES_PORT')
+        # postgres_sslmode = os.getenv('POSTGRESS_SSLMODE')
+        conn=psycopg2.connect(
+            dbname = 'recipe_app_6011', 
+            user = 'recipe_app_6011',
+            password = postgres_password,
+            host = 'recipe-app-6011.postgresql.a.osc-fr1.scalingo-dbs.com',
+            port = 40101,
+            sslmode= 'prefer'
         )
         cur = conn.cursor(cursor_factory=ext.DictCursor)
         cur.execute(sql, values)
@@ -43,3 +42,7 @@ def run_sql(sql, values = None):
 # possible gitignore and say what file needs to be ignored and that might be a .env file 
 # scalable scaling
 # what is an environment variable how does it work and how can we load it in/q
+
+
+
+# ssh-keygen enter 
