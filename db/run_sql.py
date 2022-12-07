@@ -12,13 +12,15 @@ def run_sql(sql, values = None):
         postgres_dbname = os.getenv('POSTGRES_DBNAME')
         postgres_host = os.getenv('POSTGRES_HOST')
         postgres_port = os.getenv('POSTGRES_PORT')
-        postgres_sslmode = os.getenv('POSTGRES_SSLMODE')
+        postgres_sslmode = os.getenv('POSTGRESS_SSLMODE')
         conn=psycopg2.connect(
             dbname = postgres_dbname, 
             user = postgres_user,
             password = postgres_password,
             host = postgres_host,
             port = postgres_port,
+            sslmode= postgres_sslmode
+    
 
         )
         cur = conn.cursor(cursor_factory=ext.DictCursor)
